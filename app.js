@@ -19,8 +19,8 @@ const state = {
     },
     variableNames: {
         'ulcer-size': '潰瘍サイズ',
-        'ulcer-surface': '潰瘍面',
-        'affected-surface': '病変面',
+        'ulcer-surface': '潰瘍面積',
+        'affected-surface': '病変面積',
         'stenosis': '狭窄'
     },
     scores: {},
@@ -46,6 +46,36 @@ const MM_MULTIPLIER = {
     'transverse': { A: 1, B: 1, C: 1, D: 1, E: 4 },
     'left-colon': { A: 3, B: 2, C: 1, D: 2, E: 4 },
     'rectum': { A: 3, B: 1, C: 0.5, D: 2, E: 4 }
+};
+
+// ===================================
+// Scoring Criteria Data
+// ===================================
+const SCORING_CRITERIA = {
+    'ulcer-size': [
+        '潰瘍なし',
+        'アフタ性潰瘍（0.1〜0.5cm）',
+        '大きな潰瘍（0.5〜2cm）',
+        '非常に大きな潰瘍（＞2cm）'
+    ],
+    'ulcer-surface': [
+        'なし',
+        '＜10%',
+        '10〜30%',
+        '＞30%'
+    ],
+    'affected-surface': [
+        '病変なし',
+        '＜50%',
+        '50〜75%',
+        '＞75%'
+    ],
+    'stenosis': [
+        'なし',
+        '単発、通過可能',
+        '多発、通過可能',
+        '通過不能'
+    ]
 };
 
 // ===================================
@@ -148,8 +178,20 @@ function hideVoiceModal() {
 function updateVoiceSegmentDisplay() {
     if (state.currentVoiceTarget && state.currentVariableIndex < state.variables.length) {
         const segmentName = state.segmentNames[state.currentVoiceTarget];
-        const variableName = state.variableNames[state.variables[state.currentVariableIndex]];
+        const variable = state.variables[state.currentVariableIndex];
+        const variableName = state.variableNames[variable];
         elements.voiceSegment.textContent = `${segmentName} - ${variableName}`;
+
+        // Update criteria display
+        const criteria = SCORING_CRITERIA[variable];
+        if (criteria) {
+            for (let i = 0; i <= 3; i++) {
+                const descEl = document.getElementById(`criteriaDesc${i}`);
+                if (descEl) {
+                    descEl.textContent = criteria[i] || '-';
+                }
+            }
+        }
     }
 }
 

@@ -72,8 +72,8 @@
                 <div class="score-header-row">
                     <div class="header-segment">部位</div>
                     <div class="header-item">潰瘍サイズ</div>
-                    <div class="header-item">潰瘍面</div>
-                    <div class="header-item">病変面</div>
+                    <div class="header-item">潰瘍面積</div>
+                    <div class="header-item">病変面積</div>
                     <div class="header-item">狭窄</div>
                     <div class="header-subtotal">小計</div>
                 </div>
@@ -417,9 +417,9 @@
                     </table>
                 </div>
 
-                <!-- 潰瘍面の範囲 -->
+                <!-- 潰瘍面積 -->
                 <div class="criteria-table">
-                    <h4>潰瘍面の範囲</h4>
+                    <h4>潰瘍面積</h4>
                     <table>
                         <tbody>
                             <tr>
@@ -442,9 +442,9 @@
                     </table>
                 </div>
 
-                <!-- 病変面の範囲 -->
+                <!-- 病変面積 -->
                 <div class="criteria-table">
-                    <h4>病変面の範囲</h4>
+                    <h4>病変面積</h4>
                     <table>
                         <tbody>
                             <tr>
@@ -510,6 +510,19 @@
             </div>
             <p class="voice-segment" id="voiceSegment"></p>
             <p class="voice-prompt">スコアを話してください（0〜3）</p>
+
+            <!-- 基準表示エリア -->
+            <div class="voice-criteria" id="voiceCriteria">
+                <div class="criteria-row"><span class="criteria-score">0</span><span class="criteria-desc"
+                        id="criteriaDesc0">-</span></div>
+                <div class="criteria-row"><span class="criteria-score">1</span><span class="criteria-desc"
+                        id="criteriaDesc1">-</span></div>
+                <div class="criteria-row"><span class="criteria-score">2</span><span class="criteria-desc"
+                        id="criteriaDesc2">-</span></div>
+                <div class="criteria-row"><span class="criteria-score">3</span><span class="criteria-desc"
+                        id="criteriaDesc3">-</span></div>
+            </div>
+
             <p class="voice-result" id="voiceResult"></p>
         </div>
     </div>

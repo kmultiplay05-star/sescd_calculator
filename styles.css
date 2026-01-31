@@ -862,6 +862,65 @@ body::before {
     min-height: 2rem;
 }
 
+/* Voice Criteria Display */
+.voice-criteria {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+    text-align: left;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.criteria-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+}
+
+.criteria-score {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: var(--radius-sm);
+    flex-shrink: 0;
+}
+
+.criteria-row:nth-child(1) .criteria-score {
+    background: rgba(56, 239, 125, 0.2);
+    color: var(--color-remission);
+}
+
+.criteria-row:nth-child(2) .criteria-score {
+    background: rgba(254, 202, 87, 0.2);
+    color: var(--color-mild);
+}
+
+.criteria-row:nth-child(3) .criteria-score {
+    background: rgba(255, 159, 67, 0.2);
+    color: var(--color-moderate);
+}
+
+.criteria-row:nth-child(4) .criteria-score {
+    background: rgba(255, 107, 107, 0.2);
+    color: var(--color-severe);
+}
+
+.criteria-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
 /* ===================================
    Responsive Design
    =================================== */
@@ -897,11 +956,11 @@ body::before {
     }
 
     .score-buttons[data-variable="ulcer-surface"]::before {
-        content: "潰瘍面";
+        content: "潰瘍面積";
     }
 
     .score-buttons[data-variable="affected-surface"]::before {
-        content: "病変面";
+        content: "病変面積";
     }
 
     .score-buttons[data-variable="stenosis"]::before {
